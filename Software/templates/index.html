@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Course Difficulty Predictor</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body class="p-4">
+
+  <h1 class="mb-4">Course Difficulty Predictor</h1>
+
+  <form method="POST">
+    <!-- Numeric inputs -->
+    <div class="mb-3">
+        <label for="course_rating" class="form-label">Course Rating (1–5)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="course_rating"
+          name="course_rating"
+          min="1" max="5" step="1"
+          required
+        >
+      </div>
+    <div class="mb-3">
+      <label for="assignments_per_week" class="form-label">Assignments per Week</label>
+      <input type="number" step="1" class="form-control" id="assignments_per_week" name="assignments_per_week" required>
+    </div>
+    <div class="mb-3">
+        <label for="sentiment_score" class="form-label">
+          Sentiment Score (1–5)
+        </label>
+        <input
+          type="number"
+          class="form-control"
+          id="sentiment_score"
+          name="sentiment_score"
+          min="1" max="5" step="1"
+          required
+        >
+      </div>
+    <div class="mb-3">
+      <label for="units" class="form-label">Units</label>
+      <input type="number" step="1" class="form-control" id="units" name="units" required>
+    </div>
+    <div class="mb-3">
+      <label for="hours_per_week" class="form-label">Hours per Week</label>
+      <input type="number" step="0.1" class="form-control" id="hours_per_week" name="hours_per_week" required>
+    </div>
+    <div class="mb-3">
+      <label for="projects" class="form-label">Projects</label>
+      <input type="number" step="1" class="form-control" id="projects" name="projects" required>
+    </div>
+    <div class="mb-3">
+      <label for="midterms_count" class="form-label">Midterms Count</label>
+      <input type="number" step="1" class="form-control" id="midterms_count" name="midterms_count" required>
+    </div>
+    <!-- Final Exam as Yes/No -->
+    <div class="mb-3">
+        <label for="final_exam" class="form-label">Final Exam</label>
+        <select class="form-select" id="final_exam" name="final_exam" required>
+          <option value="">Choose…</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="grading_strictness" class="form-label">
+          Grading Strictness (1–5)
+        </label>
+        <input
+          type="number"
+          class="form-control"
+          id="grading_strictness"
+          name="grading_strictness"
+          min="1" max="5" step="1"
+          required
+        >
+      </div>
+    <div class="mb-3">
+        <label for="failure_rate" class="form-label">Failure Rate (%)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="failure_rate"
+          name="failure_rate"
+          min="0" max="100" step="0.1"
+          required
+        >
+      </div>
+
+    <!-- Attendance -->
+    <div class="mb-3">
+      <label for="attendance_required" class="form-label">Attendance Required</label>
+      <select class="form-select" id="attendance_required" name="attendance_required" required>
+        <option value="">Choose…</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <!-- Extras needed for difficulty function -->
+    <div class="mb-3">
+        <label for="professor_rating" class="form-label">Professor Rating (1–5)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="professor_rating"
+          name="professor_rating"
+          min="1" max="5" step="1"
+          required
+        >
+      </div>
+    <div class="mb-3">
+        <label for="student_percentage_estimate" class="form-label">
+          Student Percentage Estimate (%)
+        </label>
+        <input
+          type="number"
+          class="form-control"
+          id="student_percentage_estimate"
+          name="student_percentage_estimate"
+          min="0" max="100" step="0.1"
+          required
+        >
+      </div>
+      <div class="mb-3">
+        <label for="drop_rate" class="form-label">Drop Rate (%)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="drop_rate"
+          name="drop_rate"
+          min="0" max="100" step="0.1"
+          required
+        >
+      </div>
+
+    <!-- Subject Area -->
+    <div class="mb-3">
+      <label for="subject_area" class="form-label">Subject Area</label>
+      <select class="form-select" id="subject_area" name="subject_area" required>
+        <option value="">Choose…</option>
+        <option value="Humanities">Humanities</option>
+        <option value="STEM">STEM</option>
+        <option value="Social Science">Social Science</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Predict</button>
+  </form>
+
+  {% if result %}
+    <div class="mt-4 alert alert-info">
+      <h4>Result:</h4>
+      <p>
+        <strong>Difficulty:</strong>
+        <span class="badge
+          {% if result.label=='Easy' %}bg-success
+          {% elif result.label=='Medium' %}bg-warning
+          {% else %}bg-danger{% endif %}">
+          {{ result.label }}
+        </span>
+      </p>
+      <p><strong>Confidence:</strong> {{ result.confidence }}</p>
+    </div>
+  {% endif %}
+
+</body>
+</html>
