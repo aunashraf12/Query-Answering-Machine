@@ -22,18 +22,15 @@ Query-Answering-Machine/
 │   │   └── scaler_norm_all.pkl     # Standard scaler for normalized features
 │   ├── cleaned_course_difficulty_dataset.csv
 │   ├── course_difficulty_dataset.csv
-│   ├── dirty_course_difficulty_dataset.csv
-│   ├── Project.ipynb              # Development notebook
-│   ├── QuAM Basics.ipynb          # Model iterations and results
-│   ├── QuAM Report.ipynb          # Final report and visualizations
-│   └── README.md                  # This file
+│   ├── dirty_course_difficulty_dataset.csv        
+│   └── README.md            # This file
 │
 ├── cleaned_course_difficulty_dataset.csv
 ├── course_difficulty_dataset.csv
 ├── dirty_course_difficulty_dataset.csv
-├── Project.ipynb
-├── QuAM Basics.ipynb
-└── QuAM Report.ipynb
+├── Project.ipynb # Development notebook
+├── QuAM QuAM Model Training & Selection.ipynb # Model iterations and results
+└── QuAM Report.ipynb # Final report and visualizations
 ```
 
 ---
@@ -68,7 +65,7 @@ Query-Answering-Machine/
 
 ## Notebooks Overview
 
-- `QuAM Basics.ipynb`: All three model iterations (KNN, Decision Trees, SVM) with tuning and evaluation.
+- `QuAM QuAM Model Training & Selection.ipynb`: All three model iterations (KNN, Decision Trees, SVM) with tuning and evaluation.
 - `QuAM Report.ipynb`: Final report combining rationale, visualizations, and lessons learned.
 - `Project.ipynb`: Consolidated notebook for Data Acquisition/Generation, Analysis, Wrangling, & Feature Engineering
 
